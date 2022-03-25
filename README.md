@@ -1,2 +1,2 @@
-# modul-2-homework-1-gigih
+# Gigih Spotify Project
 Created with CodeSandbox

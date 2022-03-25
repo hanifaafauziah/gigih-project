@@ -6,36 +6,3 @@
   text-align: center;
   padding: 20px;
 }
-
-.container {
-  border: 2px solid whitesmoke;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-}
-
-.album-image {
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.songDetail {
-  color: white;
-  font-size: 15px;
-}
-
-.btn-select {
-  background-color: white;
-  border: 2px solid white;
-  border-radius: 10px;
-  padding: 5px 15px;
-  color: black;
-  font-size: 10px;
-}
-
-.btn-select:hover {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-  font-size: 10px;
-}

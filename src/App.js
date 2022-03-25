@@ -1,29 +1,17 @@
 import "./styles.css";
 import data from "./song-data/song-data.js";
-// console.log({data.album.artists.name});
+import Music from "./components/music";
+
 export default function App() {
   return (
     <div className="App">
-      <div className="container">
-        <div>
-          <img src={data.album.images[1].url} className="album-image" />
-        </div>
-        <div className="songDetail">
-          <p>
-            <b>Song Title: </b>
-          </p>
-          <p className="songName">{data.name}</p>
-
-          <p>
-            <b>Artist: </b>
-          </p>
-          <p className="songArtist">{data.album.artists[0].name}</p>
-
-          <a href={data.external_urls.spotify}>
-            <button className="btn-select">Select</button>
-          </a>
-        </div>
-      </div>
+      <h1 className="title">Spotify Playlist</h1>
+      <Music
+        name={data.name}
+        artist={data.album.artists[0].name}
+        album={data.album.images[1].url}
+        url={data.external_urls.spotify}
+      />
     </div>
   );
 }

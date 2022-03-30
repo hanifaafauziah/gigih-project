@@ -1,30 +1,38 @@
 import "./styles.css";
-import data from "./song-data/song-data.js";
-import Music from "./components/music";
+import Login from "./components/login/login";
+import { useState, useEffect } from "react";
+import Search from "./components/search/search";
 
-export default function App() {
-  return (
-    <div className="App">
-      <h1 className="title">Spotify Playlist</h1>
-      <div className="wrapper">
-        {data.map((e) => {
-          return (
-            <Music
-              key={e.id}
-              album={e.album.images[1].url}
-              name={e.name}
-              artist={e.artists[0].name}
-              url={e.external_urls.spotify}
-            />
-          );
-        })}
+function App() {
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    window.location.hash = "";
+
+    if (!token && hash) {
+      const _token = hash.split("&")[0].split("=")[1];
+      window.localStorage.setItem("token", _token);
+      setToken(_token);
+    }
+  });
+  return !token ? (
+    <>
+      <div className="App">
+        <Login />
       </div>
-      {/* <Music
-        name={data.name}
-        artist={data.album.artists[0].name}
-        album={data.album.images[1].url}
-        url={data.external_urls.spotify}
-      /> */}
-    </div>
+    </>
+  ) : (
+    <>
+      <div className="App">
+        <header className="App-header">
+          {/* https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png */}
+          <h1 className="title">Welcome to Spotify!</h1>
+        </header>
+        <Search />
+      </div>
+    </>
   );
 }
+
+export default App;

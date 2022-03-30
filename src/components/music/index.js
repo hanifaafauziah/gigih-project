@@ -1,6 +1,6 @@
 import "./styles.css";
 import React from "react";
-import Button from "/src/components/button";
+import Button from "../button/select-btn";
 
 export default function Music(props) {
   return (

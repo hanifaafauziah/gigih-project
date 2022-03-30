@@ -1,8 +1,8 @@
 import React from "react";
-import "./styles.css";
+import "./button.css";
 
 const Button = () => {
-  return <button className="btn-select">Select</button>;
+  return <button className="btn-login">Login</button>;
 };
 
 export default Button;

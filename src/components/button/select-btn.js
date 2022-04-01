@@ -1,8 +1,26 @@
 import React from "react";
 import "./button.css";
+import { useState } from 'react';
 
-const Button = () => {
-  return <button className="btn-select">Select</button>;
-};
+function SButton({statusSelect, removeFromList, addToList, id}) {
 
-export default Button;
+    const [isSelected, setSelected] = useState(statusSelect);
+
+    const showMessage = () => {
+        setSelected(!isSelected);
+        console.log(!isSelected);
+        if (isSelected) {
+            removeFromList(id);
+        } else {
+            addToList(id);
+        }
+    }
+
+    return (
+        <>
+          <button className="btn-select" onClick={showMessage}>{!isSelected ? "Select" : "Deselect"}</button>
+        </>
+    )
+}
+
+export default SButton;

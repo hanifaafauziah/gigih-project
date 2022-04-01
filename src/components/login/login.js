@@ -1,6 +1,6 @@
 import React from "react";
 import "./login.css";
-import Button from "../button/login-btn";
+import LButton from "../button/login-btn";
 
 function Login() {
   var client_id = process.env.REACT_APP_SPOTIFY_ID_CLIENT;
@@ -22,7 +22,7 @@ function Login() {
           className="logo-spotify"
         />
         <a className="login_button" href={url}>
-          <Button />
+          <LButton />
         </a>
       </div>
     </>

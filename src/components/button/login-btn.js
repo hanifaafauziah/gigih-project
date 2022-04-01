@@ -1,8 +1,8 @@
 import React from "react";
 import "./button.css";
 
-const Button = () => {
+const LButton = () => {
   return <button className="btn-login">Login</button>;
 };
 
-export default Button;
+export default LButton;

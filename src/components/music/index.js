@@ -1,6 +1,7 @@
 import "./styles.css";
 import React from "react";
-import Button from "../button/select-btn";
+import PButton from "../button/play-btn";
+import SButton from "../button/select-btn";
 
 export default function Music(props) {
   return (
@@ -19,9 +20,12 @@ export default function Music(props) {
         </p>
         <p className="songArtist">{props.artist}</p>
 
-        <a href={props.url}>
-          <Button />
+        <a href={props.url}> 
+          <PButton />
         </a>
+
+        <SButton statusSelect={props.statusSelect} removeFromList={props.removeFromList} 
+                    addToList={props.addToList} id={props.id} />
       </div>
     </div>
   );

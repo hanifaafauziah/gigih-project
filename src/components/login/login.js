@@ -1,17 +1,9 @@
 import React from "react";
 import "./login.css";
 import LButton from "../button/login-btn";
+import { endpoint } from '../../spotify-endpoint';
 
 function Login() {
-  var client_id = process.env.REACT_APP_SPOTIFY_ID_CLIENT;
-  var redirect_uri = "http://localhost:3000/callback";
-  var scope = "playlist-modify-private";
-  var url = "https://accounts.spotify.com/authorize";
-  url += "?client_id=" + encodeURIComponent(client_id);
-  url += "&scope=" + encodeURIComponent(scope);
-  url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
-  url += "&response_type=token";
-  url += "&show_dialog=" + encodeURIComponent(true);
 
   return (
     <>
@@ -21,7 +13,7 @@ function Login() {
           alt="logo-spotify"
           className="logo-spotify"
         />
-        <a className="login_button" href={url}>
+        <a className="login_button" href={endpoint}>
           <LButton />
         </a>
       </div>

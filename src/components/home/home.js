@@ -22,21 +22,12 @@ function Home() {
         dispatch(setUserToken(_token))}
     }, [user_token, dispatch]);
 
-    
+    console.log(user_token);
 
     return(
     <Router>
       <Switch>
-          <Route path="/" exact={true}>
-            {user_token ? 
-            <Redirect to="/create-playlist" /> 
-              : 
-              <div className="App">
-                <Login/>
-              </div>
-            }
-          </Route>
-          <Route path="/create-playlist" exact={true}>
+          <Route path="/create-playlist">
             {user_token ? 
               <div className="App">
                   <header className="App-header">
@@ -48,6 +39,15 @@ function Home() {
                   <Search />
               </div>
               : <Redirect to="/" />}
+          </Route>
+          <Route path="/">
+            {user_token ? 
+              <Redirect to="/create-playlist" /> 
+              : 
+              <div className="App">
+                <Login/>
+              </div>
+            }
           </Route>
       </Switch>
     </Router>    

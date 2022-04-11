@@ -4,8 +4,9 @@ import axios from "axios";
 import Music from "../music";
 import Playlist from "../playlist/playlist.js";
 import "./search.css";
+import {useSelector} from "react-redux";
 
-function Search({token}) {
+function Search() {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
   // const [token, setToken] = useState("");
@@ -13,11 +14,12 @@ function Search({token}) {
   const [user, setUser] = useState([]);
   const [titleForm, setTitleForm] = useState("");
   const [descForm, setDescForm] = useState("");
+  const user_token = useSelector(state => state.user.user_token);
 
   const fetchData = async () => {
     await axios
       .get(
-        `https://api.spotify.com/v1/search?q=${query}&type=track&access_token=${token}`
+        `https://api.spotify.com/v1/search?q=${query}&type=track&access_token=${user_token}`
       )
       .then((response) => {
         setData(response.data.tracks.items);
@@ -30,7 +32,7 @@ function Search({token}) {
   const fetchUser = () => {
     axios.get("https://api.spotify.com/v1/me", {
         headers: {
-            Authorization: "Bearer " + token
+            Authorization: "Bearer " + user_token
         }
     })
     .then(res => {
@@ -50,7 +52,7 @@ function Search({token}) {
           public: false
       }), {
           headers: {
-              Authorization: "Bearer " + token
+            Authorization: "Bearer " + user_token
           }
       })
       .then(res => {
@@ -69,7 +71,7 @@ function Search({token}) {
         uris: selectedTrack,
     }),{
         headers: {
-            Authorization: "Bearer " + token
+          Authorization: "Bearer " + user_token
         }
     })
     .then(res => {
@@ -137,10 +139,10 @@ function Search({token}) {
   }
 
   useEffect(() => {
-      if (token) {
+      if (user_token) {
           fetchUser();
       }
-  }, [token]);
+  }, [user_token]);
 
 
   return (

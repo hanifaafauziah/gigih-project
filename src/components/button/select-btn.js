@@ -8,7 +8,7 @@ function SButton({statusSelect, removeFromList, addToList, id}) {
 
     const showMessage = () => {
         setSelected(!isSelected);
-        console.log(!isSelected);
+        // console.log(!isSelected);
         if (isSelected) {
             removeFromList(id);
         } else {

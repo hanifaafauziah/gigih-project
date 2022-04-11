@@ -5,7 +5,8 @@ import Search from "../search/search";
 import { redirect } from '../../spotify-endpoint';
 import LOButton from '../button/logout-btn';
 import { setUserToken } from '../../store/user';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
 function Home() {
   const dispatch = useDispatch();
@@ -21,25 +22,35 @@ function Home() {
         dispatch(setUserToken(_token))}
     }, [user_token, dispatch]);
 
-    return !user_token ? (
-      <>
-        <div className="App">
-          <Login />
-        </div>
-      </>
-    ) : (
-      <>
-        <div className="App">
-            <header className="App-header">
-              <h1 className="title">Welcome to Spotify!</h1>
-            </header>
-            <a className="logout-button" href={redirect}>
-              <LOButton />
-            </a>
-            <Search />
+    
 
-        </div>
-      </>
+    return(
+    <Router>
+      <Switch>
+          <Route path="/" exact={true}>
+            {user_token ? 
+            <Redirect to="/create-playlist" /> 
+              : 
+              <div className="App">
+                <Login/>
+              </div>
+            }
+          </Route>
+          <Route path="/create-playlist" exact={true}>
+            {user_token ? 
+              <div className="App">
+                  <header className="App-header">
+                    <h1 className="title">Welcome to Spotify!</h1>
+                  </header>
+                  <a className="logout-button" href={redirect}>
+                    <LOButton />
+                  </a>
+                  <Search />
+              </div>
+              : <Redirect to="/" />}
+          </Route>
+      </Switch>
+    </Router>    
     );
   }
   

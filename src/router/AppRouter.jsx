@@ -29,16 +29,6 @@ function AppRouter() {
           {/* <Route path='/profile' element={<UserProfile/>}/> */}
           <Route path="/create-playlist" element={!token ? <Navigate to="/" /> : <CreatePlaylist />} />
           <Route path="/" element={token ? <CreatePlaylist /> : <Navigate to="/login" />} />
-
-          {/* </Route> */}
-
-          {/* </Route> */}
-          {/* <Route path="/user-playlist">
-              {!token ? <Redirect exact to="/" /> : <Playlist />}
-            </Route> */}
-          {/* <Route path="*">
-              <NotFound />
-            </Route> */}
         </Routes>
       </Router>
 
